@@ -1,42 +1,30 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import styled from "styled-components";
+import { MyContext } from "../MyContext";
+import { useContext } from "react";
 
 function DisplayMovies() {
-  const [popularMovies, setPopular] = useState([]);
-  const getPopular = () => {
-    axios
-      .get(`https://imdb-api.com/en/API/MostPopularMovies/k_dizp79v2? `)
-      .then((res) => {
-        console.log(res);
-        setPopular(res.data.items);
-      })
-      .catch((err) => {
-        console.log("Error");
-      });
-  };
-  useEffect(() => {
-    getPopular();
-  }, []);
+  const { popularMovies } = useContext(MyContext);
   return (
     <div>
       <Splide
         options={{
           rewind: true,
-          perPage: 6,
+          perPage: 5,
           pagination: false,
-          gap: "0.2rem",
+          gap: "4rem",
           slide: true,
+          drag: "free",
+          arrows: true,
         }}
       >
         {popularMovies.map((movie) => {
           return (
             <SplideSlide key={movie.id}>
               <Card>
+                <div>{movie.title}</div>
                 <img src={movie.image} alt={movie.title} />
-                <p>{movie.title}</p>
               </Card>
             </SplideSlide>
           );
@@ -46,11 +34,34 @@ function DisplayMovies() {
   );
 }
 const Card = styled.div`
-  width: 200px;
-  height: 300px;
+  min-height: 20rem;
+  overflow: hidden;
+  position: relative;
+  border-radius: 2rem;
   img {
-    width: 200px;
-    height: 250px;
+    border-radius: 2rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+  }
+  div {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 0%);
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
   }
 `;
 

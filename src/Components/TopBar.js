@@ -7,6 +7,7 @@ function TopBar() {
     <div>
       <Search />
       <Categories />
+      <hr />
     </div>
   );
 }

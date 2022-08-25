@@ -1,23 +1,24 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Pages
-import HomePage from "./Pages/HomePage";
+
 import MoviesPage from "./Pages/MoviesPage";
 import SeriesPage from "./Pages/SeriesPage";
+
 // Components
 import { MyContextProvider } from "./MyContext";
-import TopBar from "./Components/TopBar";
+import CategoryPage from "./Pages/CategoryPage";
 
 function App() {
   return (
     <div className="App">
       <MyContextProvider>
         <BrowserRouter>
-          <TopBar />
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/" element={<MoviesPage />} />
+
             <Route path="/series" element={<SeriesPage />} />
+            <Route path="/categories/:type" element={<CategoryPage />} />
           </Routes>
         </BrowserRouter>
       </MyContextProvider>

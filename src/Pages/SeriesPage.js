@@ -1,11 +1,15 @@
-import DisplayMovies from "../Components/DisplayMovies";
+import DisplayPopularSeries from "../Components/DisplayPopularSeries";
 import DisplaySeries from "../Components/DisplaySeries";
+import SubCategories from "../Components/SubCategories";
 import TopBar from "../Components/TopBar";
+
 function SeriesPage() {
   return (
     <div>
-      SeriesPage
+      <TopBar />
       <DisplaySeries />
+      <SubCategories />
+      <DisplayPopularSeries />
     </div>
   );
 }

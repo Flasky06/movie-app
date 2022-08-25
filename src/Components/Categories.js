@@ -5,8 +5,7 @@ function Categories() {
   return (
     <CategoriesContainer>
       <ul>
-        <Slink to={"/"}>Home</Slink>
-        <Slink to={"/movies"}>Movies</Slink>
+        <Slink to={"/"}>Movies</Slink>
         <Slink to={"/series"}>Series</Slink>
       </ul>
     </CategoriesContainer>
